@@ -1,0 +1,40 @@
+﻿@model LocadoraDeCarros.Models.Carro
+@{
+    ViewBag.Title = "Novo Carro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Carro"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cor)
+        @Html.TextBoxFor(m => m.Cor, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cor)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Marca)
+        @Html.TextBoxFor(m => m.Marca, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Marca)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Modelo)
+        @Html.TextBoxFor(m => m.Modelo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Modelo)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Placa)
+        @Html.TextBoxFor(m => m.Placa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Placa)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ValorLocacao)
+        @Html.TextBoxFor(m => m.ValorLocacao, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ValorLocacao)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

@@ -1,0 +1,56 @@
+﻿@model LocadoraDeCarros.ViewModels.ClienteFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Cliente"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Cliente.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Nome)
+        @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Nome)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.CPF)
+        @Html.TextBoxFor(m => m.Cliente.CPF, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.CPF)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Email)
+        @Html.TextBoxFor(m => m.Cliente.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.RG)
+        @Html.TextBoxFor(m => m.Cliente.RG, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.RG)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Telefone)
+        @Html.TextBoxFor(m => m.Cliente.Telefone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Telefone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.NumeroCNH)
+        @Html.TextBoxFor(m => m.Cliente.NumeroCNH, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.NumeroCNH)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.CarroId)
+        @Html.DropDownListFor(m => m.Cliente.CarroId,
+            new SelectList(Model.Carros, "Id", "Modelo"),
+            "Escolha", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.CarroId)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LocadoraDeCarros.Models.Carro>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Carro</h2>
+
+@if (!Model.Any())
+{
+    <p>Não temos nenhum carro ainda.</p>
+}
+else
+{
+    <table id="carros" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>CPF</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var carro in Model)
+            {
+                <tr>
+                    <td> @carro.Modelo</td>
+                    <td> @carro.Modelo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

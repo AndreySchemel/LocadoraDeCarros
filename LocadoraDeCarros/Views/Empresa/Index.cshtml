@@ -1,0 +1,74 @@
+﻿@model IEnumerable<LocadoraDeCarros.Models.Empresa>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Empresa/Filiais</h2>
+
+<p>
+    @Html.ActionLink("Novo Cadastro", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (Model.Any())
+{
+    <table id="empresas" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nome Empresa</th>
+                <th>CNPJ</th>
+                <th>Numero Telefone</th>
+                <th>Empresa</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empresa in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(@empresa.NomeEmpresa, "Details", new { empresa.Id })</td>
+                    <td>@empresa.Cnpj</td>
+                    <td>@empresa.NumeroTelefone</td>
+                    <td><label>@empresa.TipoEmpresa</label></td>
+                    <td>
+                        <p>
+                            @Html.ActionLink("Editar", "Edit", new { empresa.Id }, new { @class = "btn btn-primary" })
+                        </p>
+                    </td>
+                    <td>
+                        <button class="btn-link js-delete" data-empresa-id="@empresa.Id"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não existem empresas cadastradas.</p>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#empresas").on("click",".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover esta empresa?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/empresa/delete/" + button.attr("data-empresa-id"),
+                                    method: "GET",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<LocadoraDeCarros.Models.Funcionario>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Funcionários</h2>
+
+<p>
+    @Html.ActionLink("Novo Funcionario", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (Model.Any())
+{
+    <table id="funcionarios" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>Matricula</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(@funcionario.Nome, "Details", new { funcionario.Id })</td>
+                    <td>@funcionario.Cargo</td>
+                    <td>@funcionario.Matricula</td>
+                    <td>
+                        <p>
+                            @Html.ActionLink("Editar", "Edit", new { funcionario.Id }, new { @class = "btn btn-primary" })
+                        </p>
+                    </td>
+                    <td>
+                        <button class="btn-link js-delete" data-funcionario-id="@funcionario.Id"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não existem funcionários cadastrados.</p>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#funcionarios").on("click",".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este funcionário?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/funcionario/delete/" + button.attr("data-funcionario-id"),
+                                    method: "GET",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<LocadoraDeCarros.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clientes</h2>
+
+<p>
+    @Html.ActionLink("Novo Cliente", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (Model.Any())
+{
+    <table id="clientes" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cliente in Model)
+                {
+                    <tr>
+                        <td> @Html.ActionLink(@cliente.Nome, "Details", new { cliente.Id })</td>
+                        <td> @cliente.CPF</td>
+                        <td> @cliente.Email</td>
+                        <td>
+                            <p>
+                                @Html.ActionLink("Editar", "Edit", new { cliente.Id }, new { @class = "btn btn-primary" })
+                            </p>
+                        </td>
+                        <td>
+                            <button class="btn-link js-delete" data-cliente-id="@cliente.Id"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+}
+else
+{
+        <p>Não existem clientes cadastrados.</p>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#clientes").on("click",".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este cliente?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/cliente/delete/" + button.attr("data-cliente-id"),
+                                    method: "GET",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });   
+                            }
+                        });
+                });
+        });
+    </script>
+}

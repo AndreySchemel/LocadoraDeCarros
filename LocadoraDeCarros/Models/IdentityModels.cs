@@ -20,6 +20,11 @@ namespace LocadoraDeCarros.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Empresa> Empresas { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Carro> Carros { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
