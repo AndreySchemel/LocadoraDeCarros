@@ -35,11 +35,6 @@
         @Html.TextBoxFor(m => m.CapitalSocial, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.CapitalSocial)
     </div>
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.TipoEmpresa) Matriz
-        </label>
-    </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
 }

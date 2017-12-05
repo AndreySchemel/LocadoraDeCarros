@@ -26,9 +26,10 @@ namespace LocadoraDeCarros.Controllers
         // GET: Carro
         public ActionResult Index()
         {
-
             var carros = _context.Carros.ToList();
-            return View(carros);
+            if (User.IsInRole("CanManage"))
+                return View(carros);
+            return View("ReadOnlyIndex", carros);
         }
 
         public ActionResult Details(int id)

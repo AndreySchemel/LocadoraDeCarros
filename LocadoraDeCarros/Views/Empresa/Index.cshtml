@@ -18,7 +18,6 @@
                 <th>Nome Empresa</th>
                 <th>CNPJ</th>
                 <th>Numero Telefone</th>
-                <th>Empresa</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -30,7 +29,7 @@
                     <td>@Html.ActionLink(@empresa.NomeEmpresa, "Details", new { empresa.Id })</td>
                     <td>@empresa.Cnpj</td>
                     <td>@empresa.NumeroTelefone</td>
-                    <td><label>@empresa.TipoEmpresa</label></td>
+           
                     <td>
                         <p>
                             @Html.ActionLink("Editar", "Edit", new { empresa.Id }, new { @class = "btn btn-primary" })

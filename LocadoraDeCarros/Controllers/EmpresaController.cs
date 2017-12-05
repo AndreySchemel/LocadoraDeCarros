@@ -77,7 +77,6 @@ namespace LocadoraDeCarros.Controllers
                 empresaInDb.Cnpj = empresa.Cnpj;
                 empresaInDb.Endereco = empresa.Endereco;
                 empresaInDb.CapitalSocial = empresa.CapitalSocial;
-                empresaInDb.TipoEmpresa = empresaInDb.TipoEmpresa;
 
             }
 

@@ -27,7 +27,6 @@ namespace LocadoraDeCarros.Models
         [Required]
         public double CapitalSocial { get; set; }
 
-        public bool TipoEmpresa { get; set; }
 
     }
 }
