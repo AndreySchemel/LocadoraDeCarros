@@ -13,19 +13,24 @@ namespace LocadoraDeCarros.Models
 
         [Required]
         [StringLength(255)]
+        [Display(Name = "CNPJ")]
         public string Cnpj { get; set; }
 
         [Required]
         [StringLength(255)]
+        [Display(Name = "Nome da Empresa")]
         public string NomeEmpresa { get; set; }
 
         [Required]
-        public long NumeroTelefone { get; set; }
+        [Display(Name = "Número de Telefone")]
+        public long? NumeroTelefone { get; set; }
 
+        [Display(Name = "Endereço")]
         public string Endereco { get; set; }
 
         [Required]
-        public double CapitalSocial { get; set; }
+        [Display(Name = "Capital Social")]
+        public double? CapitalSocial { get; set; }
 
 
     }

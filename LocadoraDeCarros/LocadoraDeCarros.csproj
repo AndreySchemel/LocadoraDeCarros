@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201712052131517_UpdateEmpresa.Designer.cs">
       <DependentUpon>201712052131517_UpdateEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712052221430_AtualizarCampos.cs" />
+    <Compile Include="Migrations\201712052221430_AtualizarCampos.Designer.cs">
+      <DependentUpon>201712052221430_AtualizarCampos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Carro.cs" />
@@ -346,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712052131517_UpdateEmpresa.resx">
       <DependentUpon>201712052131517_UpdateEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712052221430_AtualizarCampos.resx">
+      <DependentUpon>201712052221430_AtualizarCampos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

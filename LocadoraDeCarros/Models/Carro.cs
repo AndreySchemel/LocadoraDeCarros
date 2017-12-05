@@ -25,6 +25,7 @@ namespace LocadoraDeCarros.Models
         public string Modelo { get; set; }
 
         [Required]
+        [Display(Name = "Valor de Locação")]
         public double? ValorLocacao { get; set; }
 
     }

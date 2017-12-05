@@ -18,12 +18,13 @@ namespace LocadoraDeCarros.Models
         public string Cargo { get; set; }
 
         [Required]
-        public long Telefone { get; set; }
+        public long? Telefone { get; set; }
         [Required]
         public string Email { get; set; }
 
         [Required]
-        public int Matricula { get; set; }
+        [Display(Name = "Matrícula")]
+        public int? Matricula { get; set; }
 
     }
 }

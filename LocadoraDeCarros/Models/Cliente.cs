@@ -24,10 +24,11 @@ namespace LocadoraDeCarros.Models
 
         public string RG { get; set; }
 
-        public long Telefone { get; set; }
+        public long? Telefone { get; set; }
 
         [Required]
         [CarteiraMotorista]
+        [Display(Name = "Número da CNH")]
         public string NumeroCNH { get; set; }
 
         //propriedade de navegação
